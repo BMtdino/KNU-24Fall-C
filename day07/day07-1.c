@@ -7,7 +7,7 @@ int main() {
 	printf("Ãþ ÀÔ·Â : ");
 	scanf_s("%d", &floor);
 	printf("%dÃþ ÇÇ¶ó¹Ìµå\n", floor);
-	front = floor;
+	front = floor;z
 	behind = floor;
 
 	for (int i = 1; i <= floor; i++) {

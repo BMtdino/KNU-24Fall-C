@@ -2,19 +2,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-// 학생 구조체 정의
+// Student 구조체 정의
 typedef struct {
     char name[50];
     int score;
 } Student;
 
-// 연결리스트의 노드 정의
+// 노드 정의
 typedef struct Node {
     Student student;
     struct Node* next;
 } Node;
 
-// 새로운 학생을 삽입하는 함수
+// 새로운 학생을 노드에 삽입하는 함수
 void insertStudent(Node** head, const char* name, int score) {
     Node* new_node = (Node*)malloc(sizeof(Node));
     if (new_node == NULL) {
@@ -37,7 +37,7 @@ void insertStudent(Node** head, const char* name, int score) {
     temp->next = new_node;
 }
 
-// 학생 정보를 입력받아 리스트에 추가하는 함수
+// 학생 정보를 입력받아 insertStudent에 추가함
 void inputStudent(Node** head) {
     char name[50];
     int score;
@@ -48,7 +48,7 @@ void inputStudent(Node** head) {
     printf("%s의 성적 : ", name);
     scanf_s("%d", &score);
 
-    // 입력 받은 정보를 리스트에 추가
+    // 입력 받은 정보를 리스트에 추가함
     insertStudent(head, name, score);
 }
 
@@ -58,12 +58,13 @@ void deleteStudent(Node** head) {
     Node* temp = *head;
     Node* prev = NULL;
 
+    // 제거할 학생 입력
     printf("제거할 학생의 이름 : ");
     scanf_s("%49s", &name, sizeof(name));
 
     // 리스트가 비어 있는 경우
     if (temp == NULL) {
-        printf("학생이 없습니다.\n");
+        printf("삭제할 학생이 없습니다.\n");
         return;
     }
 
@@ -83,11 +84,11 @@ void deleteStudent(Node** head) {
 
     // 삭제할 학생이 없는 경우
     if (temp == NULL) {
-        printf("'%s' 가 삭제되었습니다.\n", name);
+        printf("삭제할 학생이 존재하지 않습니다.\n");
         return;
     }
 
-    // 노드를 리스트에서 제거하고 메모리 해제
+    // 학생을 리스트에서 제거하고 메모리 해제
     prev->next = temp->next;
     free(temp);
     printf("'%s' 가 삭제되었습니다.\n", name);
@@ -95,6 +96,7 @@ void deleteStudent(Node** head) {
 
 // 전체 학생 정보를 출력하는 함수
 void PrintAllStudents(Node* head) {
+    // 리스트에 아무것도 없는 경우
     if (head == NULL) {
         printf("-----------------------------------\n");
         printf("학생이 없습니다.\n");
@@ -102,6 +104,7 @@ void PrintAllStudents(Node* head) {
         return;
     }
 
+    // 리스트에 값이 있는 경우
     Node* temp = head;
     printf("-----------------------------------\n");
     while (temp != NULL) {

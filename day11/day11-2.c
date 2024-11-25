@@ -36,7 +36,7 @@ int main() {
 
 		//구분구적법 계산 결과 출력
 		double result = sum * wide;
-		printf("구간 %d 적분 결과 : %lf\n", n_temp, result);
+		printf("구간 %10d 적분 결과 : %lf\n", n_temp, result);
 		
 	}
 }

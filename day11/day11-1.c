@@ -6,7 +6,7 @@ int main() {
 
 	//이차방정식 계수 입력
 	printf("이차방정식의 계수를 입력하세요 (a, b, c): ");
-	scanf("%lf %lf %lf", &a, &b, &c);
+	scanf_s("%lf %lf %lf", &a, &b, &c);
 
 	double delta = b * b - 4 * a * c;
 
